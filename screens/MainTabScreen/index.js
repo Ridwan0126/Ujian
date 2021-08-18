@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+// import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -14,7 +15,8 @@ import FilterData from '../FilterData';
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 
-const Tab = createMaterialBottomTabNavigator();
+// const Tab = createMaterialBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 const MainTabScreen = () => (
   <Tab.Navigator initialRouteName="Home" activeColor="#fff">
@@ -23,11 +25,11 @@ const MainTabScreen = () => (
       //   component={HomeStackScreen}
       component={FilterData}
       options={{
-        tabBarLabel: 'Home',
+        tabBarLabel: 'CHATS',
         tabBarColor: '#009387',
-        tabBarIcon: ({color}) => (
-          <Icon name="ios-home" color={color} size={26} />
-        ),
+        // tabBarIcon: ({color}) => (
+        //   <Icon name="ios-home" color={color} size={26} />
+        // ),
       }}
     />
     <Tab.Screen
@@ -35,25 +37,25 @@ const MainTabScreen = () => (
       //   component={DetailsStackScreen}
       component={ExploreScreen}
       options={{
-        tabBarLabel: 'Updates',
+        tabBarLabel: 'STATUS',
         tabBarColor: '#1f65ff',
-        tabBarIcon: ({color}) => (
-          <Icon name="ios-notifications" color={color} size={26} />
-        ),
-      }}
-    />
-    {/* <Tab.Screen
-      name="Profile"
-      component={ProfileScreen}
-      options={{
-        tabBarLabel: 'Profile',
-        tabBarColor: '#694fad',
-        tabBarIcon: ({color}) => (
-          <Icon name="ios-person" color={color} size={26} />
-        ),
+        // tabBarIcon: ({color}) => (
+        //   <Icon name="ios-notifications" color={color} size={26} />
+        // ),
       }}
     />
     <Tab.Screen
+      name="Profile"
+      component={ProfileScreen}
+      options={{
+        tabBarLabel: 'CALLS',
+        tabBarColor: '#694fad',
+        // tabBarIcon: ({color}) => (
+        //   <Icon name="ios-person" color={color} size={26} />
+        // ),
+      }}
+    />
+    {/*<Tab.Screen
       name="Explore"
       component={ExploreScreen}
       options={{
