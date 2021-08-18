@@ -165,9 +165,9 @@ const LocalAPI = () => {
           </View>
           <Text
             style={{
-              marginLeft: 50,
+              marginLeft: 110,
               justifyContent: 'center',
-              fontSize: 25,
+              fontSize: 40,
             }}>
             ...
           </Text>
