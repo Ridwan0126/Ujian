@@ -19,7 +19,7 @@ const DetailsStack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 const MainTabScreen = () => (
-  <Tab.Navigator initialRouteName="Home" activeColor="#fff">
+  <Tab.Navigator initialRouteName="Home" activeColor="#009387">
     <Tab.Screen
       name="Home"
       //   component={HomeStackScreen}
@@ -38,7 +38,7 @@ const MainTabScreen = () => (
       component={ExploreScreen}
       options={{
         tabBarLabel: 'STATUS',
-        tabBarColor: '#1f65ff',
+        tabBarColor: '#009387',
         // tabBarIcon: ({color}) => (
         //   <Icon name="ios-notifications" color={color} size={26} />
         // ),
@@ -49,7 +49,7 @@ const MainTabScreen = () => (
       component={ProfileScreen}
       options={{
         tabBarLabel: 'CALLS',
-        tabBarColor: '#694fad',
+        tabBarColor: '#009387',
         // tabBarIcon: ({color}) => (
         //   <Icon name="ios-person" color={color} size={26} />
         // ),

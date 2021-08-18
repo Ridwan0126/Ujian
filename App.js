@@ -178,7 +178,11 @@ const App = () => {
           {loginState.userToken !== null ? (
             <Drawer.Navigator
               drawerContent={props => <DrawerContent {...props} />}>
-              <Drawer.Screen name="G2 ACADEMY" component={MainTabScreen} />
+              <Drawer.Screen
+                name="G2 ACADEMY"
+                component={MainTabScreen}
+                style={{backgroundColor: '#009387'}}
+              />
               {/* <Drawer.Screen name="SupportScreen" component={DetailScreen} /> */}
               {/* <Drawer.Screen name="SettingsScreen" component={SettingsScreen} /> */}
               {/* <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} /> */}

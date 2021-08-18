@@ -103,7 +103,7 @@ export function DrawerContent(props) {
               }}
             /> */}
           </Drawer.Section>
-          <Drawer.Section title="Preferences">
+          <Drawer.Section title="Menu">
             {/* <TouchableRipple
               onPress={() => {
                 toggleTheme();
@@ -123,7 +123,7 @@ export function DrawerContent(props) {
           icon={({color, size}) => (
             <Icon name="exit-to-app" color={color} size={size} />
           )}
-          label="Sign Out"
+          label="LogOut"
           onPress={() => {
             signOut();
           }}

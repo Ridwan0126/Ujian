@@ -31,7 +31,7 @@ class Home extends Component {
       refresh: true,
     });
     const {limit} = this.state;
-    fetch(`http://192.168.43.33:3000/contact?_limit=${limit}&_page=${page}`)
+    fetch(`http://192.168.43.33:3000/chatt?_limit=${limit}&_page=${page}`)
       // fetch(
       //   `https://jsonplaceholder.typicode.com/comments?_limit=${limit}&_page=${page}`,
       // )
@@ -87,13 +87,14 @@ class Home extends Component {
           titleStyle={{color: 'black'}}
           size="medium"
           rounded
-          title={item.first_name[0]}
+          title={item.name[0]}
           source={{uri: item.image}}
         />
         <ListItem.Content>
-          <ListItem.Title>{item.first_name}</ListItem.Title>
-          <ListItem.Subtitle>{item.phone_number}</ListItem.Subtitle>
+          <ListItem.Title>{item.name}</ListItem.Title>
+          <ListItem.Subtitle>{item.isiChatt}</ListItem.Subtitle>
         </ListItem.Content>
+        <Text>{item.time}</Text>
       </ListItem>
     );
   };
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     // borderColor: 'red',
+    // backgroundColor: '#009387',
     flex: 1,
   },
 });

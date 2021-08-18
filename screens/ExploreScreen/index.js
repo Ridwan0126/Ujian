@@ -163,6 +163,14 @@ const LocalAPI = () => {
             <Text style={{fontWeight: 'bold'}}>My Status</Text>
             <Text>Add to my status</Text>
           </View>
+          <Text
+            style={{
+              marginLeft: 50,
+              justifyContent: 'center',
+              fontSize: 25,
+            }}>
+            ...
+          </Text>
         </View>
         <View style={styles.line} />
         {/* </View> */}
