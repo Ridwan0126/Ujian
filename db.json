@@ -1,4 +1,29 @@
 {
+  "status": [
+    {
+      "id": 1,
+      "name": "Betteann",
+      "time": "2 minutes ago, 8:23 AM",
+      "image": "https://robohash.org/eligendieumfugit.png?size=50x50&set=set1"
+    }
+  ],
+  "chatt": [
+    {
+      "id": 1,
+      "name": "Betteann",
+      "isiChatt": "Hallo......",
+      "time": "8:23 AM",
+      "image": "https://robohash.org/eligendieumfugit.png?size=50x50&set=set1"
+    }
+  ],
+  "panggilan": [
+    {
+      "id": 1,
+      "first_name": "Betteann",
+      "time": "kemarin 22:45",
+      "image": "https://robohash.org/eligendieumfugit.png?size=50x50&set=set1"
+    }
+  ],
   "contact": [
     {
       "id": 3,

@@ -1,25 +1,3 @@
-// import React from 'react';
-// import {View, Text, Button, StyleSheet} from 'react-native';
-
-// const BookmarkScreen = () => {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Bookmark Screen</Text>
-//       <Button title="Click Here" onPress={() => alert('Button Clicked!')} />
-//     </View>
-//   );
-// };
-
-// export default BookmarkScreen;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-
 import React, {Component} from 'react';
 import {
   Alert,
@@ -29,6 +7,7 @@ import {
   View,
   ImageBackground,
   Image,
+  CeckBox,
 } from 'react-native';
 import {ListItem, Button} from 'react-native-elements';
 import {Avatar} from 'react-native-elements/dist/avatar/Avatar';
@@ -85,49 +64,37 @@ class Home extends Component {
 
   renderData = ({item}) => {
     return (
-      <ListItem.Swipeable
-        leftContent={
-          <Button
-            onPress={() => Alert.alert('Edit')}
-            title="Edit"
-            icon={{name: 'info', color: 'white'}}
-            buttonStyle={{minHeight: '100%'}}
-          />
-        }
-        rightContent={
-          <Button
-            onPress={() => Alert.alert('Delete')}
-            title="Delete"
-            icon={{name: 'delete', color: 'white'}}
-            Style={{minHeight: '100%', backgroundColor: 'red'}}
-          />
-        }
-        bottomDivider={true}>
+      <ListItem
+      // leftContent={
+      //   <Button
+      //     onPress={() => Alert.alert('Edit')}
+      //     title="Edit"
+      //     icon={{name: 'info', color: 'white'}}
+      //     buttonStyle={{minHeight: '100%'}}
+      //   />
+      // }
+      // rightContent={
+      //   <Button
+      //     onPress={() => Alert.alert('Delete')}
+      //     title="Delete"
+      //     icon={{name: 'delete', color: 'white'}}
+      //     Style={{minHeight: '100%', backgroundColor: 'red'}}
+      //   />
+      // }
+      // bottomDivider={true}
+      >
         <Avatar
           titleStyle={{color: 'black'}}
           size="medium"
-          // containerStyle={{backgroundColor: 'grey'}}
-          // title="A"
           rounded
           title={item.first_name[0]}
           source={{uri: item.image}}
         />
         <ListItem.Content>
           <ListItem.Title>{item.first_name}</ListItem.Title>
-          <ListItem.Subtitle>{item.email}</ListItem.Subtitle>
+          <ListItem.Subtitle>{item.phone_number}</ListItem.Subtitle>
         </ListItem.Content>
-        {/* <TouchableOpacity
-          // onPress={onDelete}
-          onPress={() => Alert.alert('Delete', 'OK Gua Delete yak!!!')}
-          style={{
-            paddingVertical: 12,
-            paddingHorizontal: 12,
-            backgroundColor: 'red',
-            borderRadius: 12 / 2,
-          }}>
-          <Text style={{fontSize: 25, color: 'white'}}>X</Text>
-        </TouchableOpacity> */}
-      </ListItem.Swipeable>
+      </ListItem>
     );
   };
 
@@ -152,7 +119,6 @@ class Home extends Component {
             refreshing={this.state.refresh}
             onEndReached={() => this.getData(this.state.page + 1)}
             onEndReachedThreshold={0.1}
-            // onDelete={() => deleteItem(item)}
           />
         </View>
       </ImageBackground>
