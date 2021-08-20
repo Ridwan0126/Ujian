@@ -19,7 +19,10 @@ const DetailsStack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 const MainTabScreen = () => (
-  <Tab.Navigator initialRouteName="Home" activeColor="#009387">
+  <Tab.Navigator
+    initialRouteName="Home"
+    activeColor="#009387"
+    screenOptions={{tabBarStyle: {backgroundColor: 'powderblue'}}}>
     <Tab.Screen
       name="Home"
       //   component={HomeStackScreen}

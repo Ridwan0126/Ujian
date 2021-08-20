@@ -1,145 +1,158 @@
-// import React from 'react';
-// import {View, Text, Button, StyleSheet} from 'react-native';
+import React, {Component} from 'react';
+import {Alert, FlatList, StyleSheet, Text, View} from 'react-native';
+import {ListItem, Input, Button} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-// const BookmarkScreen = () => {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Bookmark Screen</Text>
-//       <Button title="Click Here" onPress={() => alert('Button Clicked!')} />
-//     </View>
-//   );
-// };
+class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+      refresh: false,
+      limit: 15,
+      page: 1,
+      name: '',
+      email: '',
+      index: '',
+    };
+  }
 
-// export default BookmarkScreen;
+  getData = (page = 1) => {
+    console.log('page:', page);
+    this.setState({
+      refresh: true,
+    });
+    const {limit} = this.state;
+    fetch(
+      `https://jsonplaceholder.typicode.com/comments?_limit=${limit}&_page=${page}`,
+    )
+      .then(response => response.json())
+      .then(users => {
+        let newData = [];
+        if (page === 1)
+          newData = this.state.users.length > 0 ? this.state.users : users;
+        else newData = [...this.state.users, ...users];
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+        this.setState({
+          users: newData,
+          page,
+          refresh: false,
+        });
+      });
+  };
 
-import React from 'react';
-import {SectionList, StyleSheet, Text, View} from 'react-native';
+  onPressListener = (item, index) => {
+    // const { navigation } = this.props
+
+    // navigation.navigate("About", item)
+
+    this.setState({
+      name: item.name,
+      email: item.email,
+      index,
+    });
+  };
+
+  onButtonSavePressed = () => {
+    const {name, email, index} = this.state;
+    if (index === '')
+      return this.setState(prevState => ({
+        users: [...prevState.users, {name, email}],
+        name: '',
+        email: '',
+        index: '',
+      }));
+
+    return this.setState(prevState => {
+      const newUsers = prevState.users;
+      newUsers.splice(index, 1, {name, email});
+      return {
+        users: newUsers,
+        name: '',
+        email: '',
+        index: '',
+      };
+    });
+  };
+
+  onButtonResetPressed = () => [
+    this.setState({
+      name: '',
+      email: '',
+      index: '',
+    }),
+  ];
+
+  renderData = ({item, index}) => {
+    return (
+      <ListItem
+        bottomDivider={true}
+        onPress={() => this.onPressListener(item, index)}>
+        <ListItem.Content>
+          <ListItem.Title>{item.name}</ListItem.Title>
+          <ListItem.Subtitle>{item.email}</ListItem.Subtitle>
+        </ListItem.Content>
+      </ListItem>
+    );
+  };
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View>
+          <Input
+            placeholder="Name"
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+            }}
+            value={this.state.name}
+            onChangeText={value => this.setState({name: value})}
+            leftIcon={<Icon name="user" size={24} color="black" />}
+          />
+          <Input
+            placeholder="Email"
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+            }}
+            value={this.state.email}
+            onChangeText={value => this.setState({email: value})}
+            leftIcon={<Icon name="user" size={24} color="black" />}
+          />
+        </View>
+        <Button
+          title="Save"
+          type="outline"
+          onPress={this.onButtonSavePressed}
+        />
+        <Button
+          title="Reset"
+          type="outline"
+          onPress={this.onButtonResetPressed}
+        />
+        <FlatList
+          data={this.state.users}
+          keyExtractor={(item, idx) => idx}
+          renderItem={this.renderData}
+          onRefresh={() => this.getData(1)}
+          refreshing={this.state.refresh}
+          onEndReached={() => this.getData(this.state.page + 1)}
+          onEndReachedThreshold={0.5}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
+    borderWidth: 1,
+    borderColor: 'red',
     flex: 1,
-    paddingTop: 22,
-  },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(247,247,247,1.0)',
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
   },
 });
 
-const contacts = [
-  {index: 0, name: ' Caroyn'},
-  {index: 1, name: ' Aaroyn'},
-  {index: 2, name: ' Daroyn'},
-  {index: 3, name: ' Garoyn'},
-  {index: 4, name: ' Naroyn'},
-  {index: 5, name: ' Uaroyn'},
-  {index: 6, name: ' Zaroyn'},
-  {index: 7, name: ' Baroyn'},
-  {index: 8, name: ' Maroyn'},
-  {index: 9, name: ' Karoyn'},
-  {index: 10, name: ' Qaroyn'},
-  {index: 11, name: ' Aaroyn'},
-  {index: 12, name: ' Saroyn'},
-  {index: 13, name: ' Faroyn'},
-  {index: 14, name: ' Raroyn'},
-  {index: 15, name: ' Iaroyn'},
-  {index: 16, name: ' Naroyn'},
-  {index: 17, name: ' Vroyn'},
-  {index: 18, name: ' Zroyn'},
-];
-// getData = () => {
-//   let conatctsArr = [];
-//   let aCode = 'A'.charCodeAt(0);
-//   for (let i = 0; i < 26; i++) {
-//     let currChar = String.fromCharCode(aCode + 1);
-//     let obj = {title: currChar};
-//     let currContacts = contacts.filter(item => {
-//       return item.name[0].toUpperCase() === currChar;
-//     });
-//     if (currContacts.length > 0) {
-//       currContacts.sort((a, b) => a.name.localeCompare(b.name));
-//       obj.data = currContacts;
-//       conatctsArr.push(obj);
-//     }
-//   }
-//   return conatctsArr;
-// };
-
-const BookmarkScreen = () => {
-  getData = () => {
-    let conatctsArr = [];
-    let aCode = 'A'.charCodeAt(0);
-    for (let i = 0; i < 26; i++) {
-      let currChar = String.fromCharCode(aCode + 1);
-      let obj = {title: currChar};
-      let currContacts = contacts.filter(item => {
-        return item.name[0].toUpperCase() === currChar;
-      });
-      if (currContacts.length > 0) {
-        currContacts.sort((a, b) => a.name.localeCompare(b.name));
-        obj.data = currContacts;
-        conatctsArr.push(obj);
-      }
-    }
-    return conatctsArr;
-  };
-
-  return (
-    <View style={styles.container}>
-      <SectionList
-        sections={[
-          {title: 'D', data: ['Devin', 'Dan', 'Dominic']},
-          {
-            title: 'J',
-            data: [
-              'Jackson',
-              'James',
-              'Jillian',
-              'Jimmy',
-              'Joel',
-              'John',
-              'Julie',
-            ],
-          },
-          {
-            title: 'K',
-            data: [
-              'kackson',
-              'kames',
-              'killian',
-              'kimmy',
-              'koel',
-              'kohn',
-              'kulie',
-            ],
-          },
-        ]}
-        renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-        renderSectionHeader={({section}) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
-        )}
-        keyExtractor={(item, index) => index}
-      />
-    </View>
-  );
-};
-
-export default BookmarkScreen;
+export default Home;
