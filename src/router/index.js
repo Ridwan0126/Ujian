@@ -4,7 +4,6 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {
   Splash,
   Login,
-  Register,
   OnBoard,
   CallsTab,
   ChatsTab,
@@ -39,7 +38,6 @@ class AuthStackScreen extends Component {
           headerShown: false,
         }}>
         <AuthStack.Screen name="Login" component={Login} />
-        <AuthStack.Screen name="Register" component={Register} />
       </AuthStack.Navigator>
     );
   }

@@ -10,7 +10,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {signIn} from '../../actions/auth';
+import {signIn} from '../../../actions/auth';
 import {InputApp, ButtonApp, AuthHeader} from '../../components';
 import {COLOR} from '../../constant/color';
 
@@ -169,33 +169,6 @@ class Login extends Component {
           />
 
           <ButtonApp label="Sign in" handler={this.authHandler} />
-
-          <TouchableOpacity style={styles.forgetPass}>
-            <Text style={styles.forgetPassText}>Forget Password ?</Text>
-          </TouchableOpacity>
-
-          <Text
-            style={{
-              alignSelf: 'center',
-              fontFamily: 'SemiBold',
-              paddingVertical: 17,
-            }}>
-            Not a Account?
-            <Text> </Text>
-            <TouchableOpacity onPress={() => navigation.replace('Register')}>
-              <Text
-                style={{
-                  color: COLOR.main,
-                  fontSize: 18,
-                  fontWeight: 'bold',
-                  marginBottom: -5,
-                }}>
-                Sign Up
-              </Text>
-            </TouchableOpacity>
-            <Text> </Text>
-            Now
-          </Text>
         </Animatable.View>
       </ScrollView>
     );

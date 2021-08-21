@@ -1,5 +1,5 @@
 import React from 'react';
-import AppNavigator from './router';
+import AppNavigator from './src/router';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 function App() {

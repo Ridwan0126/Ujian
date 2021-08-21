@@ -1,4 +1,4 @@
-import {CONTACT} from '../actions/types';
+import {CONTACT} from '../../actions/types';
 
 const initialState = {
   contactList: [],

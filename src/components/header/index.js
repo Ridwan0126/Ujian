@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {signOut} from '../../actions/auth';
+import {signOut} from '../../../actions/auth';
 import {
   View,
   Text,
@@ -62,7 +62,7 @@ class Header extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              Alert.alert('Warning!', 'Are You Sure to DELETE User?', [
+              Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
                 {text: 'No', onPress: () => console.log('BTN NO')},
                 {text: 'Yes', onPress: () => this.props.doLogout()},
               ])

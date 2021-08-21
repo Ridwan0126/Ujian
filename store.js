@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux';
-import authReducer from './reducers/authReducers';
-import contactReducer from './reducers/KontakReducer';
+import authReducer from './src/reducers/authReducers';
+import contactReducer from './src/reducers/KontakReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,

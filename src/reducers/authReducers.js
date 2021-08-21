@@ -1,5 +1,5 @@
-import {SIGN_IN} from '../actions/types';
-import {SIGN_OUT} from '../actions/types';
+import {SIGN_IN} from '../../actions/types';
+import {SIGN_OUT} from '../../actions/types';
 
 const initialState = {
   loginStatus: false,
