@@ -91,12 +91,13 @@ class Header extends Component {
           </TouchableOpacity>
           {/* <View> */}
           <TouchableOpacity
-            onPress={() =>
-              Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
-                {text: 'No', onPress: () => console.log('BTN NO')},
-                {text: 'Yes', onPress: () => this.props.doLogout()},
-              ])
-            }>
+            // onPress={() =>
+            //   Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
+            //     {text: 'No', onPress: () => console.log('BTN NO')},
+            //     {text: 'Yes', onPress: () => this.props.doLogout()},
+            //   ])
+            // }>
+            onPress={() => this.clickHandler(true)}>
             <Icon
               name="exit-to-app"
               color="#fff"
