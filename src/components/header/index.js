@@ -17,14 +17,25 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
+import {Modal} from 'react-native-paper';
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isClicked: false,
+      modalVisible: false,
     };
   }
+
+  clickGandler = (visible, command) => {
+    this.setState({modalVisible: visible});
+    if (command === 'signOut') {
+      this.props.doLogout();
+    } else if (command === 'toProfile') {
+      this.props.navigation.navigate('ProfileView');
+    }
+  };
 
   clicked = () => {
     this.setState({
@@ -33,26 +44,35 @@ class Header extends Component {
   };
 
   renderLogout = () => {
+    const {modalVisible} = this.state;
+
     if (this.state.isClicked)
       return (
         <View>
-          <TouchableOpacity
-            onPress={() =>
-              Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
-                {text: 'No', onPress: () => console.log('BTN NO')},
-                {text: 'Yes', onPress: () => this.props.doLogout()},
-              ])
-            }
-            style={{
-              height: 120,
-              backgroundColor: 'white',
-              position: 'absolute',
-              top: 30,
-              right: 5,
-              paddingHorizontal: 15,
-            }}>
-            <Text>Log out</Text>
-          </TouchableOpacity>
+          <Modal
+            isVisible={modalVisible}
+            animationIn="slideInDown"
+            animationOut="slideOutRight"
+            backdropOpacity={0}
+            onBackdropPress={() => this.clickHandler(!modalVisible)}>
+            <TouchableOpacity
+              onPress={() =>
+                Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
+                  {text: 'No', onPress: () => console.log('BTN NO')},
+                  {text: 'Yes', onPress: () => this.props.doLogout()},
+                ])
+              }
+              style={{
+                height: 120,
+                backgroundColor: 'white',
+                position: 'absolute',
+                top: 30,
+                right: 5,
+                paddingHorizontal: 15,
+              }}>
+              <Text>Log out</Text>
+            </TouchableOpacity>
+          </Modal>
         </View>
       );
 
