@@ -8,8 +8,15 @@ import {
   TouchableOpacity,
   StatusBar,
   Alert,
+  useTheme,
+  Avatar,
+  Title,
+  Caption,
+  Paragraph,
+  Drawer,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 
 class Header extends Component {
   constructor(props) {
@@ -28,23 +35,25 @@ class Header extends Component {
   renderLogout = () => {
     if (this.state.isClicked)
       return (
-        <TouchableOpacity
-          onPress={() =>
-            Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
-              {text: 'No', onPress: () => console.log('BTN NO')},
-              {text: 'Yes', onPress: () => this.props.doLogout()},
-            ])
-          }
-          style={{
-            height: 120,
-            backgroundColor: 'white',
-            position: 'absolute',
-            top: 30,
-            right: 5,
-            paddingHorizontal: 15,
-          }}>
-          <Text>Log out</Text>
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
+                {text: 'No', onPress: () => console.log('BTN NO')},
+                {text: 'Yes', onPress: () => this.props.doLogout()},
+              ])
+            }
+            style={{
+              height: 120,
+              backgroundColor: 'white',
+              position: 'absolute',
+              top: 30,
+              right: 5,
+              paddingHorizontal: 15,
+            }}>
+            <Text>Log out</Text>
+          </TouchableOpacity>
+        </View>
       );
 
     return null;
@@ -60,6 +69,7 @@ class Header extends Component {
             onPress={() => Alert.alert('Search Data', 'Coming Soon...')}>
             <Icon name="search" color="#fff" size={23} style={{padding: 5}} />
           </TouchableOpacity>
+          {/* <View> */}
           <TouchableOpacity
             onPress={() =>
               Alert.alert('Warning!', 'Are You Sure to Log Out ?', [
@@ -103,7 +113,50 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: '500',
   },
+  title: {
+    fontSize: 16,
+    marginTop: 3,
+    fontWeight: 'bold',
+  },
   icons: {
     flexDirection: 'row',
+  },
+  drawerContent: {
+    flex: 1,
+  },
+  userInfoSection: {
+    paddingLeft: 20,
+  },
+  caption: {
+    fontSize: 14,
+    lineHeight: 14,
+  },
+  row: {
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  section: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  paragraph: {
+    fontWeight: 'bold',
+    marginRight: 3,
+  },
+  drawerSection: {
+    marginTop: 15,
+  },
+  bottomDrawerSection: {
+    marginBottom: 15,
+    borderTopColor: '#f4f4f4',
+    borderTopWidth: 1,
+  },
+  preference: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
   },
 });
