@@ -111,7 +111,7 @@ class ChatView extends Component {
     return (
       <View style={{flex: 1}}>
         <ImageBackground
-          source={require('../../images/background1.png')}
+          source={require('../../../images/background1.png')}
           style={styles.image}>
           <View style={styles.header}>
             <View style={styles.left}>

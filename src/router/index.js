@@ -10,20 +10,26 @@ import {
   StatusTab,
   ChatView,
   ContactView,
+  CameraTabs,
 } from '../screens';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icons from 'react-native-vector-icons/Ionicons';
 import React, {Component} from 'react';
 
 import {Header} from '../components';
 import {Chatt_User1, Chatt_User2} from '../constant/dataChatt';
 import {Panggilan_User1, Panggilan_User2} from '../constant/dataTelfon';
 import {Status_User1, Status_User2} from '../constant/dataStatus';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {DrawerContent} from './screens/DrawerContent';
+import Draw from '../screens/Drawer';
 
 const RootStack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
+const Drawer = createDrawerNavigator();
 
 class AuthStackScreen extends Component {
   constructor(props) {
@@ -83,6 +89,21 @@ class Home extends React.Component {
           style={{backgroundColor: 'black'}}
           timingConfig={{duration: 200}}
           initialLayout={{width: Dimensions.get('window').width}}>
+          <Tab.Screen
+            // tim
+            name="Camera"
+            // children={props => (
+            //   <CameraTabs {...props} CameraData={this.state.Calls} />
+            // )}
+            component={CameraTabs}
+            options={{
+              tabBarLabel: '',
+              tabBarColor: 'white',
+              tabBarIcon: ({color}) => (
+                <Icons name="camera-outline" color="white" size={26} />
+              ),
+            }}
+          />
           <Tab.Screen
             tim
             name="Chats"

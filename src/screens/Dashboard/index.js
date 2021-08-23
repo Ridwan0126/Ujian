@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import logos from '../../images/1.png';
+import logos from '../../../images/1.png';
 
 class OnBoard extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class OnBoard extends Component {
         <StatusBar translucent backgroundColor="rgba(0,0,0,0)" />
         <ImageBackground
           style={{flex: 1}}
-          source={require('../../images/locationG24.png')}>
+          source={require('../../../images/locationG24.png')}>
           <View style={styles.header}>
             <Animatable.Image
               animation="bounceIn"
